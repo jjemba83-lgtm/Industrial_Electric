@@ -85,5 +85,7 @@ if uploaded_files:
 totals = summary.sum(numeric_only=True)
 totals.name = 'Totals'  # set index label for the row
 summary_with_totals = pd.concat([summary, totals.to_frame().T])
-st.dataframe(summary_with_totals)
+if st.button('Update'):
+    # Insert your update logic here (e.g. refresh data, rerun function)
+    st.dataframe(summary_with_totals)
 
