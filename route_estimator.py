@@ -94,7 +94,7 @@ if st.button('Update'):
 output = io.BytesIO()
 with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
     summary_with_totals .to_excel(writer, index=False, sheet_name='Sheet1')
-    writer.save()
+    #writer.save()
     data = output.getvalue()
 
 st.download_button(
