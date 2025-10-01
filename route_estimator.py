@@ -89,3 +89,16 @@ if st.button('Update'):
     # Insert your update logic here (e.g. refresh data, rerun function)
     st.dataframe(summary_with_totals)
 
+#give option to download excel file
+output = io.BytesIO()
+with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+    summary_with_totals .to_excel(writer, index=False, sheet_name='Sheet1')
+    writer.save()
+    data = output.getvalue()
+
+st.download_button(
+    label="Download data as Excel",
+    data=data,
+    file_name='route_summary.xlsx',
+    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+)
